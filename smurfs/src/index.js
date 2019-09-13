@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 
 import { reducer } from './components/reducers';
 
+
 const store = createStore(reducer);
 
 ReactDOM.render(

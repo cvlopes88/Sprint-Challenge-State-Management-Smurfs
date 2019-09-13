@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import { connect } from 'react-redux';
+
 
 
 
 
 const SmurfsCard = props => {
+
+
+
     return (
         <li>
             Name: {props.name},
@@ -15,9 +18,4 @@ const SmurfsCard = props => {
     )
 }
 
-
-
-export default connect(
-    null,
-    {  }
-  )(SmurfsCard);
+export default SmurfsCard;

@@ -1,19 +1,34 @@
-import React from "react";
+import React, { useEffect }  from "react";
 import SmurfsCard from './SmurfsCard';
+import { getSmurfs } from './actions';
+import { connect } from 'react-redux';
 
-
-const SmurfsList = (props) => {
-   
+const SmurfsList = (state) => {
+   console.log("dddddd", )
     return (
+        
         <div>
             <h1>All the Smurfs</h1>
             <ol>
-                {props.smurfs.state.smurfs.map(smurf => (
-            <SmurfsCard key={smurf.id} name={smurf.name} age={smurf.age} height={smurf.height}/>
-            ))}
+                {/* {props.smurfs.state.smurfs.map(smurf => ( */}
+            <SmurfsCard key={state.id} name={state.name}/>
+            {/* ))} */}
             </ol>
+            <button onClick={getSmurfs}>fetch Smurfs</button>
         </div>
     )
 }
 
-export default SmurfsList;
+
+
+const mapStateToProps = state => {
+    console.log('nnnnowwww',state.smurfs.name)
+    return {
+     state: state
+    };
+  };
+  
+  export default connect(
+    mapStateToProps,
+    { getSmurfs }
+  )(SmurfsList);
