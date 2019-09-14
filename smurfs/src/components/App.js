@@ -1,13 +1,18 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
 import { connect } from 'react-redux';
+import Nav from './Nav';
 
-import SmurfsList from './SmurfsList';
+
+
+
+
+
 
 const App = (state) => {
   return (
     <div className='app'>
-      <SmurfsList smurfs={state} />
+      <Nav /> 
     </div>
   )
 }
@@ -17,7 +22,7 @@ const App = (state) => {
 const mapStateToProps = state => {
   
   return {
-    //Name of the prop: state
+    
     state: state
   };
 };
@@ -26,3 +31,5 @@ export default connect(
   mapStateToProps,
   {}
 )(App);
+
+

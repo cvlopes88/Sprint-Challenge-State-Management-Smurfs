@@ -3,18 +3,29 @@ import SmurfsCard from './SmurfsCard';
 import { getSmurfs } from './actions';
 import { connect } from 'react-redux';
 
-const SmurfsList = (state) => {
-   console.log("dddddd", )
+const SmurfsList = ({smurfs, getSmurfs}) => {
+    useEffect(() => {
+        getSmurfs();
+
+
+    }, []);
+    
+   
     return (
         
-        <div>
+       
+        <div className='memberslist'>
+          
             <h1>All the Smurfs</h1>
-            <ol>
-                {/* {props.smurfs.state.smurfs.map(smurf => ( */}
-            <SmurfsCard key={state.id} name={state.name}/>
-            {/* ))} */}
-            </ol>
-            <button onClick={getSmurfs}>fetch Smurfs</button>
+            {smurfs.map(item => (
+
+            
+            <ul>  
+            <SmurfsCard  name={item.name} age={item.age} height={item.height}/>
+              
+            </ul>
+            ))}
+            <button className='refresh' onClick={getSmurfs}>Refresh</button>
         </div>
     )
 }
@@ -22,10 +33,10 @@ const SmurfsList = (state) => {
 
 
 const mapStateToProps = state => {
-    console.log('nnnnowwww',state.smurfs.name)
+    console.log("smurfs", state.smurfs)
     return {
-     state: state
-    };
+     smurfs: state.smurfs
+    }
   };
   
   export default connect(
